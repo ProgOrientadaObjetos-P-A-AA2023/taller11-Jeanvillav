@@ -16,20 +16,20 @@ public class Ejecutor01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MenuDia menuNinos = new MenuDia("Niños 01", 2.0, 1.0, 1.5);
-        MenuDia menuNinos2 = new MenuDia("Niños 02", 3.0, 1.0, 1.5);
-        MenuEco menuEco1 = new MenuEco("Carta 001", 4.0, 25.00);
-        MenuEco menuEconomico = new MenuEco("Econo 001", 4.0, 25.0);
-        
-        // Inicio de solución
         
         ArrayList<Menu> lista2 = new ArrayList<>();
-        lista2.add(menuNinos);
-        lista2.add(menuNinos2);
-        lista2.add(menuCarta);
-        lista2.add(menuEconomico);
         
+        Menu menuNi = new MenuNinos("Niños 01", 2.00, 1.00, 1.50);
+        Menu menuNi2 = new MenuNinos("Niños 02", 3.00, 1.00, 1.50);
+        Menu menuEc = new MenuEco("Econo001", 4.00, 25.00);
+        Menu menuDia = new MenuDia("Dia 001", 5.00, 1.00, 1.00);
+        Menu menuCarta = new MenuCarta("Carta 001", 6.0, 1.5, 2.0, 10.00);
         
+        lista2.add(menuNi);
+        lista2.add(menuNi2);
+        lista2.add(menuEc);
+        lista2.add(menuDia);
+        lista2.add(menuCarta); 
         for (int i = 0; i < lista2.size(); i++) {
             //lista.get(i).calcularValorMenu();
             lista2.get(i).establecerValorMenu();

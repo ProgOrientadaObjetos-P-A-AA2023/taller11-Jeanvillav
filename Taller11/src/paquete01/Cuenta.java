@@ -19,7 +19,7 @@ valor a cancelar total*/
     private ArrayList<Menu> listadoMenus;
     private double iva;
     private double valorCancelar;
-    
+    private double valorSubTotal;
     public Cuenta(String nc, ArrayList<Menu> l, double i) {
         nombreC= nc;
         listadoMenus = l;
@@ -47,7 +47,7 @@ valor a cancelar total*/
     }
 
     public void establecerIva(double i) {
-        iva = i / 100;
+        iva = i;
     }
 
     public double obtenerValorCancelar() {
@@ -55,20 +55,21 @@ valor a cancelar total*/
     }
 
     public void establecerValorCancelar() {
-        valorCancelar = valorSubTotal * iva;
+        valorCancelar = (valorSubTotal*(iva/100))+valorSubTotal;
     }
 
     public double obtenerSubTotal() {
         return valorSubTotal;
     }
 
-    public void establecerSubtotal() {
-        valorSubTotal = 0;
-        for (Menu menu : listadoMenus) {
-            valorSubTotal += menu.obtenerValorMenu();
+     public void establecerSubtotal() {
+        double suma=0;
+        for (int i=0;i<obtenerListadoMenus().size();i++){
+            suma+=listadoMenus.get(i).obtenerValorMenu();
         }
+        valorSubTotal = suma;
     }
-    private double valorSubTotal;
+    
     
     public Cuenta(String nC,ArrayList<Menu> m, int i){
         nombreC= nC;
@@ -102,7 +103,7 @@ valor a cancelar total*/
         cadena=String.format("%s\n"
         +"\nSubtotal: %.2f"
         +"\nIVA: %.2f"
-        +"\nTotal a pagar: %.2f",
+        +"\nTotal a pagar: %.3f",
                 cadena,
                 obtenerSubTotal(),
                 obtenerIva(),
